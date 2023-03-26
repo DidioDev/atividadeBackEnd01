@@ -1,0 +1,6 @@
+#USO PESSOAL
+database.json
+
+#OUTROS
+node_modules/
+package-lock.json
