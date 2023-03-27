@@ -97,6 +97,9 @@ userRoute.put('/retirada/:id', (request,response)=>{
 
     //CASO O USUÁRIO FOR ENCONTRADO;
     const nome = userExist.nome;
+    const cpf = userExist.cpf;
+    const cidade = userExist.cidade;
+    const cep = userExist.cep;
 
     if(userExist.saldo >= Number(valor)) {
 
@@ -104,7 +107,7 @@ userRoute.put('/retirada/:id', (request,response)=>{
     transacao.push({tipo, valor});
 
     let saldo = userExist.saldo;
-    database.update(table, id, {id, nome, saldo: saldo - Number(valor), transacao});
+    database.update(table, id, {id, nome, cpf, cidade, cep, saldo: saldo - Number(valor), transacao});
 
     response.status(201).json(
       {msg: `Sucesso! Foi retirado o valor de R$${valor}, do usuário: ${nome}.` });
@@ -127,15 +130,19 @@ userRoute.put('/deposito/:id', (request,response)=>{
 
     //CASO O USUÁRIO FOR ENCONTRADO;
     const nome = userExist.nome;
+    const cpf = userExist.cpf;
+    const cidade = userExist.cidade;
+    const cep = userExist.cep;
 
     let transacao = userExist.transacao;
     transacao.push({tipo, valor});
 
     let saldo = userExist.saldo;
-    database.update(table, id, {id, nome, saldo: saldo + Number(valor), transacao});
+
+    database.update(table, id, {id, nome, cpf, cidade, cep, saldo: saldo + Number(valor), transacao});
 
     response.status(201).json(
-      {msg: `Sucesso! Foi depositado o valor de R$${valor}, na conta do usuário: ${nome}` });
+      {msg: `Sucesso! Foi depositado o valor de R$${valor}, na conta do usuário: ${nome}.` });
 });
 
 export {userRoute}

@@ -1,8 +1,8 @@
-###VISUALIZAR TODOS OS IDS DO SISTEMA:
+###VISUALIZAR TODOS OS USUÁRIO DO SISTEMA:
 GET http://localhost:3000/user/
 
 ###VER O SALDO E EXTRATO PELO ID:
-GET http://localhost:3000/user/22ee6aad-664a-4cb3-9784-49c83fc45cfd
+GET http://localhost:3000/user/b94e49c9-39c2-429a-a720-497750bbc8df
 Content-Type: application/json
 
 ###ADICIONAR UM USUÁRIO NO SISTEMA:
@@ -10,37 +10,37 @@ POST http://localhost:3000/user/
 Content-Type: application/json
 
 {
-"nome": "Tiago", "cpf": "123.456.789-10", "cidade": "Santa Rosa", "cep": "98787000"
+"nome": "Lucas", "cpf": "123.456.789-10", "cidade": "Santa Rosa", "cep": "98787000"
 }
 
 ###ADICIONAR DINHEIRO AO USUÁRIO:
-PUT http://localhost:3000/user/deposito/22ee6aad-664a-4cb3-9784-49c83fc45cfd
+PUT http://localhost:3000/user/deposito/523b54f0-c777-438e-8a8f-dfaf7525d13d
 content-type: application/json
 
 {
 "tipo": "deposito",
-"valor": 500
+"valor": 100
 }
 
 ###RETIRAR DINHEIRO DO USUÁRIO:
-PUT http://localhost:3000/user/retirada/22ee6aad-664a-4cb3-9784-49c83fc45cfd
+PUT http://localhost:3000/user/retirada/523b54f0-c777-438e-8a8f-dfaf7525d13d
 content-type: application/json
 
 {
 "tipo": "retirada",
-"valor": 600
+"valor": 50
 }
 
 ###DELETAR USUÁRIO DO SISTEMA:
-DELETE http://localhost:3000/user/22ee6aad-664a-4cb3-9784-49c83fc45cfd
+DELETE http://localhost:3000/user/523b54f0-c777-438e-8a8f-dfaf7525d13d
 
 
 ###ATUALIZAR UM USUÁRIO PELO ID:
-PUT http://localhost:3000/user/22ee6aad-664a-4cb3-9784-49c83fc45cfd
+PUT http://localhost:3000/user/523b54f0-c777-438e-8a8f-dfaf7525d13d
 content-type: application/json
 
 {
-"nome": "Pedro", "cidade": "Santa Rosa", "cep": "98787000"
+"nome": "Lucas Smaniotto", "cpf": "035.122.412-10", "cidade": "Tuparendi", "cep": "98940-000"
 }
 
 ###BUSCAR ID PELA ROTA:
