@@ -2,7 +2,7 @@ import { Router } from "express";
 import { Database } from '../database';
 import { randomUUID } from 'node:crypto';
 
-//VARIÁVEIS ATIVAS;
+//VARIÁVEIS;
 const userRoute = Router();
 const database = new Database();
 const table = "user";
