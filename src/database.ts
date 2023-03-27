@@ -15,12 +15,19 @@ export class Database {
       });
   }
 
+  //CATCH = QUANDO O QUE TEM QUE FAZER NÃO É FEITO, ELE TRATA COM OUTRO CALLBACK;
+  //PARSE = CONVERTE O OBJETO ESCRITO PARA OBJETO;
+
   persist() {
     fs.writeFile(databasePath, JSON.stringify(this.database, null, 2));
+    //STRINGIFY = CONVERTE O OBJETO PARA OBJETO ESCRITO;
   }
 
   select(table: string, id?: string): object {
     let data = this.database[table] ?? [];
+
+    //?? = É UM OPERADOR QUE VERIFICA SE A CONDIÇÃO DOS DADOS QUE RECEBE É NULL OU UNDER;
+    //CASO FOR NULL ELE ALOCA O ESPAÇO PARA UM DADO JÁ PROGRAMADO;
 
     if (id) {
       data = data.find((row: any) => {
@@ -33,11 +40,11 @@ export class Database {
 
   insert(table: string, data: object): object {
     if (Array.isArray(this.database[table])) {
-      // Se sim entra aqui
+      //SE SIM ENTRA AQUI;
       this.database[table].push(data);
       this.persist();
     } else {
-      // Se não entra aqui
+      //SE NÃO ENTRA AQUI;
       this.database[table] = [data];
     }
 
@@ -45,10 +52,12 @@ export class Database {
   }
 
   delete(table: string, id: string) {
+    //PROCURA DE UM ID
     const rowIndex = this.database[table].findIndex(
       (row: any) => row.id === id
     );
 
+    //VALIDANDO O ID E O DELETE;
     if (rowIndex > -1) {
       this.database[table].splice(rowIndex, 1);
       this.persist();
@@ -62,6 +71,7 @@ export class Database {
 
     if (rowIndex > -1) {
       this.database[table][rowIndex] = { id, ...data };
+      //... = DESCONSTRUIR UM OBJETO;
       this.persist();
     }
   }
